@@ -1,0 +1,71 @@
+/********************* lightbox-modal *********************/
+#lightbox-modal-bg {
+    max-width: 90%;
+    max-height: 90%;
+    height: fit-content;
+    width: fit-content;
+	/*display: flex;*/
+}
+
+#lightbox-modal-content {
+  position: relative;
+  border-color: #e0e0e0;
+  border-width: 1em;
+  position: relative;
+  overflow: hidden;
+  height: 90%;
+  cursor: grab;
+  /*display: flex;*/
+}
+
+.notransition {
+    transition: none !important;
+}
+#lightbox-modal-body {
+  max-height: calc(100vh - 143px); /* no idea why 143px but it works */
+  padding: 0;
+  cursor: grab;
+  transition: all 0.2s ease-in-out;
+  transition-delay: -50ms;
+  /*display: flex;*/
+}
+/* https://dev.to/stackfindover/zoom-image-point-with-mouse-wheel-11n3 */
+#lightbox-modal-body {
+  width: 100%;
+  height: 100%;
+  transform-origin: 0px 0px;
+  transform: scale(1) translate(0px, 0px);
+}
+div#lightbox-modal-body > img {
+  width: 100%;
+  height: auto;
+}
+
+.pixelated {
+    image-rendering: optimizeSpeed;             /* STOP SMOOTHING, GIVE ME SPEED  */
+    image-rendering: -moz-crisp-edges;          /* Firefox                        */
+    image-rendering: -o-crisp-edges;            /* Opera                          */
+    image-rendering: -webkit-optimize-contrast; /* Chrome (and eventually Safari) */
+    image-rendering: pixelated;                 /* Universal support since 2021   */
+    image-rendering: optimize-contrast;         /* CSS3 Proposed                  */
+    -ms-interpolation-mode: nearest-neighbor;   /* IE8+                           */
+}
+/* https://dev.to/stackfindover/zoom-image-point-with-mouse-wheel-11n3 */
+
+#lightbox-modal-close-btn {
+  position: absolute;
+  right: 0.5em;
+  top: 0.5em;
+  cursor: pointer;
+  padding: var(--bs-btn-padding-y) var(--bs-btn-padding-x) !important;
+  color: #666;
+  z-index: 2;
+}
+
+/*#lightbox-modal-close-btn:hover {
+  color: #333;
+  border-color: #959595;
+}*/
+
+/********************* lightbox-modal *********************/
+

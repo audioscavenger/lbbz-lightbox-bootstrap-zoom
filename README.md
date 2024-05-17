@@ -1,62 +1,55 @@
-# template-windows
-Description
+# lbbz LightBox Bootstrap Zoom
+Yet another lightbox… for WordPress… But this one has a zoom! You can zoom in by scrolling, and clicking simply advances through the gallery as usual.
 
-![template-windows screenshot](https://gitea.derewonko.com/audioscavenger/template-windows/raw/branch/main/assets/template-windows-screenshot-01.png "template-windows screenshot")
+![lbbz LightBox Bootstrap Zoom screenshot](/assets/lbbz-example-zoom-featured-meme.avif "lbbz LightBox Bootstrap Zoom screenshot")
 
 
-Windows template for batch scripts etc
-## :scroll: template-windows: Table of Contents
-- [template-windows](#template-windows)
-  - [:scroll: template-windows: Table of Contents](#scroll-template-windows-Table-of-Contents)
+## :scroll: lbbz LightBox Bootstrap Zoom: Table of Contents
+- [lbbz LightBox Bootstrap Zoom](#lbbz-LightBox-Bootstrap-Zoom)
+  - [:scroll: lbbz LightBox Bootstrap Zoom: Table of Contents](#scroll-lbbz-LightBox-Bootstrap-Zoom-Table-of-Contents)
 - [Presentation](#Presentation)
   - [:sparkles: Features](#sparkles-Features)
   - [:memo: Compatibility](#memo-Compatibility)
 - [:question: How To Use](#question-How-To-Use)
   - [Install](#Install)
 - [:clipboard: TODO List](#clipboard-TODO-List)
-- [:unamused: Thoughts](#unamused-Thoughts)
-- [:mag: Highlights](#mag-Highlights)
-  - [listFunctions](#listFunctions)
-- [:ribbon: License (is-GNU-AGPLv3)](#ribbon-License-is-GNU-AGPLv3)
+- [:ribbon: License (is-GNU-AGPLv3)](#ribbon-License-(is-GNU-AGPLv3))
 
 # Presentation
 
 ## :sparkles: Features
-* 100+ aliases
-> Covers common slips and uber-used commands:
-> * **ll = lla** =ls -lAq
+* based off Modal Bootstrap v5.3 (getbootstrap.com)
+* open and close with a button or click outside image
+* scroll zoom in and out
+* disables zoom if image is inside the box dimensions
+* drag image
+* drag release if outside the box
+* pixelated at zoom scale 2x: disables resampling via css
 
 ## :memo: Compatibility
-* System V
-  * SunOS
+* WordPress 6.5.3
+* PHP 5.3
 
 # :question: How To Use
+Nothing to do, just install the 3 snippets. It's automatic, as long as your pictures have a link to the original (or custom) file.
+![lbbz how to activate it](/assets/lbbz-image-insert-advice.avif "lbbz LightBox Bootstrap Zoom screenshot")
 
 ## Install
-git clone https://gitea.derewonko.com/audioscavenger/template-windows
+git clone https://github.com/audioscavenger/lbbz LightBox Bootstrap Zoom
 
 # :clipboard: TODO List
 
 * Todo
 - [ ] Stop appending todo list
+- [ ] fix bugs: sometimes the sizes are not detected properly and a page refresh is needed
+- [ ] handle galleries: simply add rel=name to any of your images to make a gallery (a bit like foobox)
+- [ ] add nagigation buttons
+- [ ] embed bootstrap if needed
+- [ ] embed all that in a WP plugin and release it!
+- [ ] make money instead of coding for free?
 
 * Releases
-- [x] create releases excluding opt/docs
-- [ ] create installer because of non-empty profile folder
-
-# :unamused: Thoughts
-
-# :mag: Highlights
-
-## listFunctions
-
-**listFunctions** is the usage/functions listing script you want to try first.
-
-* `listFunctions -h`
-
-  Usage: 
-  
-  ![listFunctions -h](https://www.it-cooking.com/listFunctions-help-oq10/ "listFunctions -h")
+- [x] bugfree snippets
 
 
 # :ribbon: License (is GNU AGPLv3)
