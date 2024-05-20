@@ -60,7 +60,33 @@ div#lightbox-modal-body > img {
   padding: var(--bs-btn-padding-y) var(--bs-btn-padding-x) !important;
   color: #666;
   z-index: 2;
+  touch-action: manipulation;
 }
+
+#lightbox-modal-prev-btn {
+  font-size: 5em;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  cursor: pointer;
+  padding: var(--bs-btn-padding-y) var(--bs-btn-padding-x) !important;
+  color: #666;
+  z-index: 2;
+  touch-action: manipulation;
+}
+
+#lightbox-modal-next-btn {
+  font-size: 5em;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  cursor: pointer;
+  padding: var(--bs-btn-padding-y) var(--bs-btn-padding-x) !important;
+  color: #666;
+  z-index: 2;
+  touch-action: manipulation;
+}
+
 
 /*#lightbox-modal-close-btn:hover {
   color: #333;

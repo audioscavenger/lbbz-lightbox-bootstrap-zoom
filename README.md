@@ -5,8 +5,6 @@ Yet another lightbox… for WordPress… But this one has a zoom! You can zoom i
 
 
 ## :scroll: lbbz LightBox Bootstrap Zoom: Table of Contents
-- [lbbz LightBox Bootstrap Zoom](#lbbz-LightBox-Bootstrap-Zoom)
-  - [:scroll: lbbz LightBox Bootstrap Zoom: Table of Contents](#scroll-lbbz-LightBox-Bootstrap-Zoom-Table-of-Contents)
 - [Presentation](#Presentation)
   - [:sparkles: Features](#sparkles-Features)
   - [:memo: Compatibility](#memo-Compatibility)
@@ -18,6 +16,7 @@ Yet another lightbox… for WordPress… But this one has a zoom! You can zoom i
 # Presentation
 
 ## :sparkles: Features
+* auto-gallery by simply adding same *rel* to each links
 * based off Modal Bootstrap v5.3 (getbootstrap.com)
 * open and close with a button or click outside image
 * scroll zoom in and out
@@ -42,13 +41,14 @@ git clone https://github.com/audioscavenger/lbbz LightBox Bootstrap Zoom
 * Todo
 - [ ] Stop appending todo list
 - [ ] fix bugs: sometimes the sizes are not detected properly and a page refresh is needed
-- [ ] handle galleries: simply add rel=name to any of your images to make a gallery (a bit like foobox)
-- [ ] add nagigation buttons
 - [ ] embed bootstrap if needed
 - [ ] embed all that in a WP plugin and release it!
 - [ ] make money instead of coding for free?
 
 * Releases
+- [x] also load next if simple click
+- [x] add nagigation buttons
+- [x] handle galleries: simply add rel=name to any of your images to make a gallery (a bit like foobox)
 - [x] bugfree snippets
 
 

@@ -21,15 +21,17 @@ jQuery(document).ready(function( $ ){
 		var lightbox_zoom = document.getElementById('lightbox-modal-content');
 		var modalBody = document.getElementById('lightbox-modal-body');
 		var modalImg = document.querySelector('.modal-body img');
+		var prev = document.getElementById('lightbox-modal-prev-btn');
+		var next = document.getElementById('lightbox-modal-next-btn');
 		var scale, minScale,
 			scale_ratio = 1.1,
 			clickhold = false,
 			pointX = 0, pointY = 0,
-			start = { x: 0, y: 0 },
+			start = { x: 0, y: 0 }, moved = false,
 			rect, boundW, boundH, boundPortrait,
 			imgRect, imgW, imgH, naturalW, naturalH, imgPortrait,
 			pixelated = false,
-			rel = null, related=[];
+			rel = null, related=[], index = 0;
 
 		function resetSizes() {
 			clickhold = false
@@ -37,8 +39,9 @@ jQuery(document).ready(function( $ ){
 			pointY = 0
 			start = { x: 0, y: 0 }
 			scale = 1
+			modalBody.removeAttribute("style")
 		}
-	
+
 		function detectDimensions(event) {
 			//console.log('event',event)
 			// naturalW naturalH = actual size of the image, we don;t care about those values since all is relative to the computed starting size
@@ -130,6 +133,10 @@ jQuery(document).ready(function( $ ){
 						//console.log('rel:', rel);
 						related = document.querySelectorAll('[rel="'+rel+'"]');
 						//console.log('related:', related);
+						related.forEach(function (currentValue, currentIndex, listObj) {
+						  //console.log(`currentValue=${currentValue}, currentIndex=${currentIndex}, href=${currentValue.href}`);
+						  if (parentHref == currentValue.href) index = currentIndex;
+						});
 					}
 					
 					// reset transform style from the parent
@@ -166,9 +173,32 @@ jQuery(document).ready(function( $ ){
 				detectDimensions(e);
 			}
 
+  			prev.onclick = function(e) {
+				index = (index == 0 && related.length > 1) ? related.length - 1 : --index;
+				//console.log(`index=${index} href=${related[index]} related=`,related)
+				modalImg.src = related[index]
+				resetSizes()
+			}
+
+  			next.onclick = function(e) {
+				index = (index == related.length - 1 && related.length > 1) ? 0 : ++index;
+				//console.log(`index=${index} href=${related[index]} related=`,related)
+				modalImg.src = related[index]
+				resetSizes()
+			}
+
+  			modalImg.onclick = function(e) {
+				if (!moved) {
+					index = (index == related.length - 1 && related.length > 1) ? 0 : ++index;
+					//console.log(`index=${index} href=${related[index]} related=`,related)
+					modalImg.src = related[index]
+					resetSizes()
+				}
+			}
+
 			// lightbox zoom ///////////////////////////////////////////////
 			function setTransform(e) {
-				console.log(`pointX/Y=${pointX}/${pointY} scale=${scale} mouseX/Y=${e.x}/${e.y}`);
+				//console.log(`pointX/Y=${pointX}/${pointY} scale=${scale} mouseX/Y=${e.x}/${e.y}`);
 
 				// release mouse when dragging outside the modal.
 				// If we don't do that, the image sticks to it and when back in modal a click is needed to release. Inconvenient.
@@ -189,6 +219,7 @@ jQuery(document).ready(function( $ ){
 				//modalBody.classList.add('notransition');
 				// e.clientX/Y = e.x/y = cursor position from top-left corner
 				start = { x: e.x - pointX, y: e.y - pointY };
+				moved = false;
 				//console.log('e',e);
 				//console.log('e.x, e.y',e.x,e.y);
 				//console.log('pointX, pointY',pointX,pointY);
@@ -207,6 +238,7 @@ jQuery(document).ready(function( $ ){
 				}
 				pointX = (e.x - start.x);
 				pointY = (e.y - start.y);
+				moved = true;	// drag detected
 				setTransform(e);
 			}
 
