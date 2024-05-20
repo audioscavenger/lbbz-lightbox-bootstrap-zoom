@@ -1,18 +1,19 @@
-// version: 1.1.0
-
+// version: 1.2.0
+// 
 // https://developer.wordpress.org/reference/hooks/the_content/
 // all img should have: data-bs-toggle="modal" data-bs-target="#lightbox-modal"
 function get_lightbox_html($content){
 if ( is_singular() && in_the_loop() && is_main_query() ) {
 $modal = <<<HEREDOC
 <div id="lightbox-modal" class="modal fade" tabindex="-1" aria-hidden="true">
+  <div id="spinner" class="lds-dual-ring"></div>
   <div id="lightbox-modal-bg" class="modal-dialog modal-dialog-centered">
     <div id="lightbox-modal-content" class="modal-content lightbox_zoom_outer">
-	  <button id="lightbox-modal-close-btn" type="button" class="btn btn-secondary" data-bs-dismiss="modal">❌</button>
-	  <div id="lightbox-modal-body" class="modal-body">
-		<img id="lightbox-modal-img" decoding="async" loading="lazy" />
-	  </div>
-	</div>
+      <button id="lightbox-modal-close-btn" type="button" class="btn btn-secondary" data-bs-dismiss="modal">❌</button>
+        <div id="lightbox-modal-body" class="modal-body">
+          <img id="lightbox-modal-img" decoding="async" loading="lazy" />
+      </div>
+    </div>
   </div>
   <button id="lightbox-modal-prev-btn" type="button" class="btn btn-link">◀️</button>
   <button id="lightbox-modal-next-btn" type="button" class="btn btn-link">▶️</button>

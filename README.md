@@ -38,17 +38,27 @@ git clone https://github.com/audioscavenger/lbbz LightBox Bootstrap Zoom
 
 # :clipboard: TODO List
 
-* Todo
+Todo
+
 - [ ] Stop appending todo list
 - [ ] fix bugs: sometimes the sizes are not detected properly and a page refresh is needed
 - [ ] embed bootstrap if needed
 - [ ] embed all that in a WP plugin and release it!
 - [ ] make money instead of coding for free?
 
-* Releases
+Releases
+
+1.2.0
+- [x] spinner onload
+- [x] opacity onload
+
+1.1.0
 - [x] also load next if simple click
 - [x] add nagigation buttons
 - [x] handle galleries: simply add rel=name to any of your images to make a gallery (a bit like foobox)
+
+1.0.0
+- [x] compatible with native theme lightbox as long as class .gallery is present
 - [x] bugfree snippets
 
 

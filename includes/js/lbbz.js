@@ -23,6 +23,7 @@ jQuery(document).ready(function( $ ){
 		var modalImg = document.querySelector('.modal-body img');
 		var prev = document.getElementById('lightbox-modal-prev-btn');
 		var next = document.getElementById('lightbox-modal-next-btn');
+		var spinner = document.getElementById('spinner');
 		var scale, minScale,
 			scale_ratio = 1.1,
 			clickhold = false,
@@ -43,6 +44,8 @@ jQuery(document).ready(function( $ ){
 		}
 
 		function detectDimensions(event) {
+			//modalImg.classList.remove("lds-dual-ring");
+
 			//console.log('event',event)
 			// naturalW naturalH = actual size of the image, we don;t care about those values since all is relative to the computed starting size
 			naturalW = modalImg.naturalWidth
@@ -171,29 +174,36 @@ jQuery(document).ready(function( $ ){
 			// async Update the modal's img with full size img onload
 			modalImg.onload = function(e) {
 				detectDimensions(e);
+				spinner.classList.remove("lds-dual-ring");
+				modalImg.classList.remove('opacity-25');
 			}
-
+			
   			prev.onclick = function(e) {
+				spinner.classList.add('lds-dual-ring');
+				modalImg.classList.add('opacity-25');
 				index = (index == 0 && related.length > 1) ? related.length - 1 : --index;
 				//console.log(`index=${index} href=${related[index]} related=`,related)
 				modalImg.src = related[index]
-				resetSizes()
+				//resetSizes()
 			}
 
   			next.onclick = function(e) {
+				spinner.classList.add('lds-dual-ring');
+				modalImg.classList.add('opacity-25');
 				index = (index == related.length - 1 && related.length > 1) ? 0 : ++index;
 				//console.log(`index=${index} href=${related[index]} related=`,related)
 				modalImg.src = related[index]
-				resetSizes()
+				//resetSizes()
 			}
 
   			modalImg.onclick = function(e) {
-				if (!moved) {
-					index = (index == related.length - 1 && related.length > 1) ? 0 : ++index;
-					//console.log(`index=${index} href=${related[index]} related=`,related)
-					modalImg.src = related[index]
-					resetSizes()
-				}
+				if (moved) return;
+				spinner.classList.add('lds-dual-ring');
+				modalImg.classList.add('opacity-25');
+				index = (index == related.length - 1 && related.length > 1) ? 0 : ++index;
+				//console.log(`index=${index} href=${related[index]} related=`,related)
+				modalImg.src = related[index]
+				//resetSizes()
 			}
 
 			// lightbox zoom ///////////////////////////////////////////////
