@@ -35,7 +35,7 @@ Nothing to do or configure, just activate it! It's automatic, as long as:
 * your pictures have a link to the original (or custom) file
 * for galleries: link rel is the same for all images
 
-![lbbz how to activate it](/assets/lbbz-image-insert-advice.avif "lbbz LightBox Bootstrap Zoom screenshot")
+![lbbz how to activate it](/assets/screenshot-1.png "lbbz LightBox Bootstrap Zoom screenshot")
 
 ## Install
 ### As a snippet:
@@ -59,7 +59,7 @@ Todo
 
 Releases
 
-1.3.0
+1.3.1
 - [x] WordPress plugin release!
 
 1.2.1

@@ -5,7 +5,7 @@ Plugin Name:  Lightbox Bootstrap Zoom
 Plugin URI:   https://www.it-cooking.com/wordpress-plugin-lbbz-lightbox-bootstrap-zoom-v1-0/
 Description:  Lightbox Gallery for WordPress, with zoom-in by scrolling.
 Author:       Eric Derewonko
-Version:      1.3.0
+Version:      1.3.1
 Author URI:   https://github.com/audioscavenger/
 License:      AGPLv3
 Requires WP: 6.5
@@ -53,7 +53,11 @@ define('LBBZ_MIN_PHP_VERSION', '5.3.0');
 // https://getbootstrap.com/docs/5.3/utilities/background/
 
 // https://developer.wordpress.org/plugins/plugin-basics/best-practices/#folder-structure
+// https://developer.wordpress.org/plugins/wordpress-org/detailed-plugin-guidelines/
+// https://developer.wordpress.org/plugins/wordpress-org/planning-submitting-and-maintaining-plugins/
+// https://wordpress.org/plugins/developers/add/
 /* ============================================================= */
+
 // $lbbz_debug = false;
 $lbbz_debug = true;
 // BUG: in LBBZ_NOCACHE, & is escaped: ?nocache=true%2F&#038;v=192851974

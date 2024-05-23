@@ -6,7 +6,7 @@ Requires at least: 4.8
 Tested up to: 6.5.3
 Requires PHP: 5.3
 Requires Bootstrap: 5
-Stable tag: 1.3.0
+Stable tag: 1.3.1
 License: AGPLv3
 License URI: https://www.gnu.org/licenses/agpl-3.0.html
 
@@ -31,7 +31,7 @@ You like it? You can't scrolling and zooming? [Paste some cash with PayPal](http
 
 == Installation ==
 
-Follow the standard [WordPress plugin installation procedere](https://wordpress.org/documentation/article/manage-plugins/).
+Follow the standard [WordPress plugin installation procedure](https://wordpress.org/documentation/article/manage-plugins/).
 
 == Screenshots ==
 
@@ -39,7 +39,7 @@ Follow the standard [WordPress plugin installation procedere](https://wordpress.
 
 == Changelog ==
 
-= 1.3.0 =
+= 1.3.1 =
 * Initial release
 
 = 1.2.1 =
@@ -57,6 +57,10 @@ Follow the standard [WordPress plugin installation procedere](https://wordpress.
 = 1.0.0 =
 * compatible with native theme lightbox as long as class .gallery is present
 * bugfree snippets
+
+== Participate ==
+Join me at [Github](https://github.com/audioscavenger/lbbz-lightbox-bootstrap-zoom)
+
 
 == Upgrade Notice ==
 

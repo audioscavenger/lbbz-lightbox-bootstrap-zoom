@@ -176,12 +176,19 @@ goto :EOF
 echo %HIGH%%b%  %~0 %END% 1>&2
 
 IF NOT DEFINED buildVersion IF EXIST "%projectConfig%" for /F "tokens=2 delims==" %%v in ('findstr /R /I /C:"[ ]*set version=[0-9]" "%projectConfig%"') DO set buildVersion=%%v
+REM echo buildVersion=%buildVersion%
 IF NOT DEFINED buildVersion IF EXIST "%projectConfig%" for /F "tokens=3"          %%v in ('findstr /R /I /C:"[ ]*[#/][#/]*[ ][ ]*version[:=][ ][ ]*[0-9]" "%projectConfig%"') DO set buildVersion=%%v
+REM echo buildVersion=%buildVersion%
 IF NOT DEFINED buildVersion IF EXIST "%projectConfig%" for /F "tokens=2 delims==" %%v in ('findstr /R /I /C:"[ ]*[#/][#/]*[ ][ ]*version[ ][ ]*=[ ][ ]*[0-9]" "%projectConfig%"') DO set buildVersion=%%v
+REM echo buildVersion=%buildVersion%
 IF NOT DEFINED buildVersion IF EXIST "%projectConfig%" for /F "tokens=2"          %%v in ('findstr /R /I /C:"[ ]*[#/]*version[:=][ ][ ]*[0-9]" "%projectConfig%"') DO set buildVersion=%%v
+REM echo buildVersion=%buildVersion%
 IF NOT DEFINED buildVersion IF EXIST "%projectConfig%" for /F "tokens=3"          %%v in ('findstr /R /I /C:"[ ]*[#/]*version[ ][ ]*[:=][ ][ ]*[0-9]" "%projectConfig%"') DO set buildVersion=%%v
+REM echo buildVersion=%buildVersion%
 IF NOT DEFINED buildVersion IF EXIST "%projectConfig%" for /F "tokens=2 delims==" %%v in ('findstr /R /I /C:"[ ]*[#/]*version[ ][ ]*=[0-9]" "%projectConfig%"') DO set buildVersion=%%v
+REM echo buildVersion=%buildVersion%
 IF NOT DEFINED buildVersion IF EXIST "%projectConfig%" for /F "tokens=2 delims=:" %%v in ('findstr /R /I /C:"[ ]*[#/]*version[ ][ ]*:[0-9]" "%projectConfig%"') DO set buildVersion=%%v
+REM echo buildVersion=%buildVersion%
 
 IF NOT DEFINED buildVersion IF DEFINED buildVersionAutomated set buildVersion=%buildVersionAutomated%
 IF NOT DEFINED buildVersion set /p buildVersion=buildVersion? 
