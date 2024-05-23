@@ -1,60 +1,101 @@
-// version: 1.2.0
-// 
-// https://developer.wordpress.org/reference/hooks/the_content/
-// all img should have: data-bs-toggle="modal" data-bs-target="#lightbox-modal"
-function get_lightbox_html($content){
-if ( is_singular() && in_the_loop() && is_main_query() ) {
-$modal = <<<HEREDOC
-<div id="lightbox-modal" class="modal fade" tabindex="-1" aria-hidden="true">
-  <div id="spinner" class="lds-dual-ring"></div>
-  <div id="lightbox-modal-bg" class="modal-dialog modal-dialog-centered">
-    <div id="lightbox-modal-content" class="modal-content lightbox_zoom_outer">
-      <button id="lightbox-modal-close-btn" type="button" class="btn btn-secondary" data-bs-dismiss="modal">❌</button>
-        <div id="lightbox-modal-body" class="modal-body">
-          <img id="lightbox-modal-img" decoding="async" loading="lazy" />
-      </div>
-    </div>
-  </div>
-  <button id="lightbox-modal-prev-btn" type="button" class="btn btn-link">◀️</button>
-  <button id="lightbox-modal-next-btn" type="button" class="btn btn-link">▶️</button>
-</div>	
-HEREDOC;
-return $content.$modal;
-}
-}
-add_filter( 'the_content', 'get_lightbox_html' );
+<?php
 
-// Wordpress lightbox-modal data add to all images: data-bs-toggle="modal" data-bs-target="#lightbox-modal"
-// noobs prefer the heavy DOM method... preg_replace is 100x faster
-function add_lightbox_data_to_img( $content ) {
-if ( is_singular() && in_the_loop() && is_main_query() ) {
-	global $post;
-	$pattern ="/<a (.*?)href=(.*?)><img (.*?)class=\"(.*?)\"(.*?)>/i";
-	$replacement = '<a $1href=$2><img data-bs-toggle="modal" data-bs-target="#lightbox-modal" $3class="$4 img-fluid"$5>';
-	$content = preg_replace($pattern, $replacement, $content);
-	// $html = preg_replace( '/<img /', ' data-bs-toggle="modal" data-bs-target="#lightbox-modal"', $html );
-	return $content;
-	}
-return $content;
+/*
+Plugin Name:  Lightbox Bootstrap Zoom
+Plugin URI:   https://www.it-cooking.com/wordpress-plugin-lbbz-lightbox-bootstrap-zoom-v1-0/
+Description:  Lightbox Gallery for WordPress, with zoom-in by scrolling.
+Author:       Eric Derewonko
+Version:      1.3.0
+Author URI:   https://github.com/audioscavenger/
+License:      AGPLv3
+Requires WP: 6.5
+Requires PHP: 5.3
+Text Domain:  lbbz
+Domain Path:  /languages
+License URI:  https://www.gnu.org/licenses/agpl-3.0.html
+*/
+
+/*
+  Copyright 2024 Eric Derewonko
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU AFFERO GENERAL PUBLIC LICENSE, version 3, as
+  published by the Free Software Foundation.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program; if not, write to the Free Software Foundation, Inc. <http://fsf.org/>
+  51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+*/
+
+
+// https://developer.wordpress.org/plugins/plugin-basics/best-practices/
+if (!defined('ABSPATH')) exit; // Exit if accessed directly
+
+if (defined('LBBZ_PLUGIN')) exit;  // Prevent problems if plugin is included twice (#472)
+
+define('LBBZ_PLUGIN', __FILE__);
+define('LBBZ_PLUGIN_DIR', __DIR__);
+define('LBBZ_URL', plugin_dir_url( __FILE__ ));
+define('LBBZ_NAME', 'Lightbox Bootstrap Zoom');
+define('LBBZ_MIN_PHP_VERSION', '5.3.0');
+
+/* ============================================================= */
+// https://codex.wordpress.org/Shortcode_API
+// https://adambrown.info/p/wp_hooks/hook
+// https://rachievee.com/the-wordpress-hooks-firing-sequence/
+
+// https://getbootstrap.com/docs/5.3/helpers/color-background/
+// https://getbootstrap.com/docs/5.3/utilities/colors/
+// https://getbootstrap.com/docs/5.3/utilities/background/
+
+// https://developer.wordpress.org/plugins/plugin-basics/best-practices/#folder-structure
+/* ============================================================= */
+// $lbbz_debug = false;
+$lbbz_debug = true;
+// BUG: in LBBZ_NOCACHE, & is escaped: ?nocache=true%2F&#038;v=192851974
+if (!defined('LBBZ_NOCACHE')) { if ($lbbz_debug) {define('LBBZ_NOCACHE', '?nocache=true&v='.rand());} else {define('LBBZ_NOCACHE');} }
+
+
+// ======================================================================== //		
+// PHP Version notice if version < 5.3
+// ======================================================================== // 
+if ( is_admin() ) {
+  require_once( 'includes/lbbz-admin.php' );
+  
+  //Only run this if the PHP version is less than 5.3
+  if (version_compare(PHP_VERSION, LBBZ_MIN_PHP_VERSION, '<')) {
+    add_action( 'admin_notices', 'lbbz_php_version_notice' );
+  }
 }
-add_filter( 'the_content', 'add_lightbox_data_to_img', 20 );  // use 20 to execute after shortcodes
+// ======================================================================== // 
 
-/* for some reason, this crap add /body twice
-// https://stackoverflow.com/questions/20473004/how-to-add-automatic-class-in-image-for-wordpress-post
-function add_lightbox_data_to_img($content){
-	if (is_single()) {
-		$content = mb_convert_encoding($content, 'HTML-ENTITIES', "UTF-8");
-		$document->loadHTML(utf8_decode($content), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD); // / body twice fix
 
-		$imgs = $document->getElementsByTagName('img');
-		foreach ($imgs as $img) {
-			$img->setAttribute('data-bs-toggle','modal');
-			$img->setAttribute('data-bs-target','#lightbox-modal');
-		}
+// ======================================================================== // 
+// register_activation_hook( __FILE__, 'pluginprefix_function_to_run' );
+// register_deactivation_hook( __FILE__, 'pluginprefix_function_to_run' );
+// ======================================================================== // 
+require_once( 'includes/lbbz-public.php' );
 
-		$html = $document->saveHTML();
-		return $html;
-	}
-}
-add_filter('the_content', 'add_lightbox_data_to_img');
+/* // nopthing works as you wish, these days
+if ( ! function_exists( 'lbbz_load' )) { function lbbz_load() {
+  $currentScreen = get_current_screen();
+  // ------------------------------------------------------------------------------ // posts     pages     post  page
+     // echo('<pre>currentScreen      base='.$currentScreen->base.PHP_EOL);         // edit      edit      post  post
+          // echo('currentScreen        id='.$currentScreen->id.PHP_EOL);           // edit-post edit-page post  page
+  // echo('currentScreen post_type='.$currentScreen->post_type.'</pre>'PHP_EOL);    // post      page      post  page
+  if( $currentScreen->id === "post" ) {
+    require_once( 'includes/lbbz-public.php' );
+    
+    add_action( 'wp_enqueue_scripts', 'lbbz_load_assets', 12 );  // loaded
+    add_action( 'admin_print_footer_scripts', 'lbbz_load_assets' );  // loaded
+    
+    add_filter( 'the_content', 'lbbz_insert_lightbox_html' );
+    add_filter( 'the_content', 'lbbz_add_lightbox_data_to_img', 20 );  // use 20 to execute after shortcodes; to be fair, I believe 13 is okay
+  }
+}}
+add_action( 'current_screen', 'lbbz_load' );
 */

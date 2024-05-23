@@ -14,15 +14,15 @@ jQuery(document).ready(function( $ ){
 	
 	// https://getbootstrap.com/docs/5.3/components/modal/#methods
 	// php will only add the modal if there is at least 1 image in post
-	const lightboxModal = document.getElementById('lightbox-modal')
+	const lightboxModal = document.getElementById('lbbz')
 	if (lightboxModal) {
-		// we cannot uselightbox-modal-body because we want to scroll wheel outside the img as well
-		//lightbox_zoom = document.getElementById('lightbox-modal-body');
-		var lightbox_zoom = document.getElementById('lightbox-modal-content');
-		var modalBody = document.getElementById('lightbox-modal-body');
+		// we cannot uselbbz-body because we want to scroll wheel outside the img as well
+		//lightbox_zoom = document.getElementById('lbbz-body');
+		var lightbox_zoom = document.getElementById('lbbz-content');
+		var modalBody = document.getElementById('lbbz-body');
 		var modalImg = document.querySelector('.modal-body img');
-		var prev = document.getElementById('lightbox-modal-prev-btn');
-		var next = document.getElementById('lightbox-modal-next-btn');
+		var prev = document.getElementById('lbbz-prev-btn');
+		var next = document.getElementById('lbbz-next-btn');
 		var spinner = document.getElementById('spinner');
 		var scale, minScale,
 			scale_ratio = 1.1,
@@ -33,6 +33,8 @@ jQuery(document).ready(function( $ ){
 			imgRect, imgW, imgH, naturalW, naturalH, imgPortrait,
 			pixelated = false,
 			rel = null, related=[], index = 0;
+    // var spinnerClass = 'lds-dual-ring';
+    var spinnerClass = 'lds-hourglass';
 
 		function resetSizes() {
 			clickhold = false
@@ -44,7 +46,7 @@ jQuery(document).ready(function( $ ){
 		}
 
 		function detectDimensions(event) {
-			//modalImg.classList.remove("lds-dual-ring");
+			//modalImg.classList.remove(spinnerClass);
 
 			//console.log('event',event)
 			// naturalW naturalH = actual size of the image, we don;t care about those values since all is relative to the computed starting size
@@ -80,7 +82,7 @@ jQuery(document).ready(function( $ ){
 			//console.log(`boundWxH=${boundW}x${boundH} imgWxH=${imgW}x${imgH} scale=${scale}=1 minScale=${minScale}`);
 		}
 
-		// event delegation but all img should have: data-bs-toggle="modal" data-bs-target="#lightbox-modal"
+		// event delegation but all img should have: data-bs-toggle="modal" data-bs-target="#lbbz"
 		// this has to be added with a PHP snippet unfortunately...
 		// we could do it here as well...
 		document.getElementsByTagName("article")[0].addEventListener('click', function(event) {
@@ -140,6 +142,9 @@ jQuery(document).ready(function( $ ){
 						  //console.log(`currentValue=${currentValue}, currentIndex=${currentIndex}, href=${currentValue.href}`);
 						  if (parentHref == currentValue.href) index = currentIndex;
 						});
+					} else {
+						rel = null;
+						related = [];
 					}
 					
 					// reset transform style from the parent
@@ -174,36 +179,42 @@ jQuery(document).ready(function( $ ){
 			// async Update the modal's img with full size img onload
 			modalImg.onload = function(e) {
 				detectDimensions(e);
-				spinner.classList.remove("lds-dual-ring");
+				spinner.classList.remove(spinnerClass);
 				modalImg.classList.remove('opacity-25');
 			}
 			
   			prev.onclick = function(e) {
-				spinner.classList.add('lds-dual-ring');
-				modalImg.classList.add('opacity-25');
-				index = (index == 0 && related.length > 1) ? related.length - 1 : --index;
-				//console.log(`index=${index} href=${related[index]} related=`,related)
-				modalImg.src = related[index]
-				//resetSizes()
+				if (related.length > 1) {
+					spinner.classList.add(spinnerClass);
+					modalImg.classList.add('opacity-25');
+					index = (index == 0 && related.length > 1) ? related.length - 1 : --index;
+					//console.log(`index=${index} href=${related[index]} related=`,related)
+					modalImg.src = related[index]
+					//resetSizes()
+				}
 			}
 
   			next.onclick = function(e) {
-				spinner.classList.add('lds-dual-ring');
-				modalImg.classList.add('opacity-25');
-				index = (index == related.length - 1 && related.length > 1) ? 0 : ++index;
-				//console.log(`index=${index} href=${related[index]} related=`,related)
-				modalImg.src = related[index]
-				//resetSizes()
+				if (related.length > 1) {
+					spinner.classList.add(spinnerClass);
+					modalImg.classList.add('opacity-25');
+					index = (index == related.length - 1 && related.length > 1) ? 0 : ++index;
+					//console.log(`index=${index} href=${related[index]} related=`,related)
+					modalImg.src = related[index]
+					//resetSizes()
+				}
 			}
 
   			modalImg.onclick = function(e) {
 				if (moved) return;
-				spinner.classList.add('lds-dual-ring');
-				modalImg.classList.add('opacity-25');
-				index = (index == related.length - 1 && related.length > 1) ? 0 : ++index;
-				//console.log(`index=${index} href=${related[index]} related=`,related)
-				modalImg.src = related[index]
-				//resetSizes()
+				if (related.length > 1) {
+					spinner.classList.add(spinnerClass);
+					modalImg.classList.add('opacity-25');
+					index = (index == related.length - 1 && related.length > 1) ? 0 : ++index;
+					//console.log(`index=${index} href=${related[index]} related=`,related)
+					modalImg.src = related[index]
+					//resetSizes()
+				}
 			}
 
 			// lightbox zoom ///////////////////////////////////////////////

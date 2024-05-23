@@ -1,5 +1,5 @@
 # lbbz LightBox Bootstrap Zoom
-Yet another lightbox… for WordPress… But this one has a zoom! You can zoom in by scrolling, and clicking simply advances through the gallery as usual.
+Lightbox Gallery for WordPress with zoom-in by scrolling. Will ignore actual WordPress galleries for compatibility.
 
 ![lbbz LightBox Bootstrap Zoom screenshot](/assets/lbbz-example-zoom-featured-meme.avif "lbbz LightBox Bootstrap Zoom screenshot")
 
@@ -16,8 +16,8 @@ Yet another lightbox… for WordPress… But this one has a zoom! You can zoom i
 # Presentation
 
 ## :sparkles: Features
-* auto-gallery by simply adding same *rel* to each links
-* based off Modal Bootstrap v5.3 (getbootstrap.com)
+* auto-gallery by simply adding the same *rel* to each link of a gallery
+* relies on Modal Bootstrap v5.3 (getbootstrap.com)
 * open and close with a button or click outside image
 * scroll zoom in and out
 * disables zoom if image is inside the box dimensions
@@ -28,13 +28,23 @@ Yet another lightbox… for WordPress… But this one has a zoom! You can zoom i
 ## :memo: Compatibility
 * WordPress 6.5.3
 * PHP 5.3
+* Bootstrap 5
 
 # :question: How To Use
-Nothing to do, just install the 3 snippets. It's automatic, as long as your pictures have a link to the original (or custom) file.
+Nothing to do or configure, just activate it! It's automatic, as long as:
+* your pictures have a link to the original (or custom) file
+* for galleries: link rel is the same for all images
+
 ![lbbz how to activate it](/assets/lbbz-image-insert-advice.avif "lbbz LightBox Bootstrap Zoom screenshot")
 
 ## Install
+### As a snippet:
 git clone https://github.com/audioscavenger/lbbz LightBox Bootstrap Zoom
+
+Then create a PHP, CSS and JS snippet with each of the files included.
+
+### As a WordPress plugin:
+Simply install as a normal WordPress plugin.
 
 # :clipboard: TODO List
 
@@ -42,11 +52,18 @@ Todo
 
 - [ ] Stop appending todo list
 - [ ] fix bugs: sometimes the sizes are not detected properly and a page refresh is needed
+- [ ] fix bugs: dragging image after resizing browser can become slow
 - [ ] embed bootstrap if needed
 - [ ] embed all that in a WP plugin and release it!
 - [ ] make money instead of coding for free?
 
 Releases
+
+1.3.0
+- [x] WordPress plugin release!
+
+1.2.1
+- [x] bugfix: no spinner onload when rel = null or related is unique
 
 1.2.0
 - [x] spinner onload

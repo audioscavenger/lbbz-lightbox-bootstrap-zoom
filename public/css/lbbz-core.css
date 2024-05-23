@@ -1,5 +1,5 @@
-/********************* lightbox-modal *********************/
-#lightbox-modal-bg {
+/********************* lbbz *********************/
+#lbbz-bg {
     max-width: 90%;
     max-height: 90%;
     height: fit-content;
@@ -7,7 +7,7 @@
 	/*display: flex;*/
 }
 
-#lightbox-modal-content {
+#lbbz-content {
   position: relative;
   border-color: #e0e0e0;
   border-width: 1em;
@@ -19,9 +19,9 @@
 }
 
 .notransition {
-    transition: none !important;
+  transition: none !important;
 }
-#lightbox-modal-body {
+#lbbz-body {
   max-height: calc(100vh - 143px); /* no idea why 143px but it works */
   padding: 0;
   cursor: grab;
@@ -30,13 +30,13 @@
   /*display: flex;*/
 }
 /* https://dev.to/stackfindover/zoom-image-point-with-mouse-wheel-11n3 */
-#lightbox-modal-body {
+#lbbz-body {
   width: 100%;
   height: 100%;
   transform-origin: 0px 0px;
   transform: scale(1) translate(0px, 0px);
 }
-div#lightbox-modal-body > img {
+div#lbbz-body > img {
   width: 100%;
   height: auto;
 }
@@ -52,7 +52,7 @@ div#lightbox-modal-body > img {
 }
 /* https://dev.to/stackfindover/zoom-image-point-with-mouse-wheel-11n3 */
 
-#lightbox-modal-close-btn {
+#lbbz-close-btn {
   position: absolute;
   right: 0.5em;
   top: 0.5em;
@@ -63,7 +63,7 @@ div#lightbox-modal-body > img {
   touch-action: manipulation;
 }
 
-#lightbox-modal-prev-btn {
+#lbbz-prev-btn {
   font-size: 5em;
   position: absolute;
   left: 0;
@@ -75,7 +75,7 @@ div#lightbox-modal-body > img {
   touch-action: manipulation;
 }
 
-#lightbox-modal-next-btn {
+#lbbz-next-btn {
   font-size: 5em;
   position: absolute;
   right: 0;
@@ -88,10 +88,97 @@ div#lightbox-modal-body > img {
 }
 
 
-/*#lightbox-modal-close-btn:hover {
+/*#lbbz-close-btn:hover {
   color: #333;
   border-color: #959595;
 }*/
 
-/********************* lightbox-modal *********************/
+/********************* lbbz *********************/
+
+/********************* spinner hourly glass *********************/
+/* https://loading.io/css/ */
+
+.lds-hourglass,
+.lds-hourglass:after {
+  box-sizing: border-box;
+}
+.lds-hourglass {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-hourglass:after {
+  content: " ";
+  display: block;
+  border-radius: 50%;
+  width: 0;
+  height: 0;
+  margin: 8px;
+  box-sizing: border-box;
+  border: 32px solid currentColor;
+  border-color: currentColor transparent currentColor transparent;
+  animation: lds-hourglass 1.2s infinite;
+}
+@keyframes lds-hourglass {
+  0% {
+    transform: rotate(0);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  50% {
+    transform: rotate(900deg);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  100% {
+    transform: rotate(1800deg);
+  }
+}
+
+.lds-hourglass {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+}
+/********************* spinner hourly glass *********************/
+
+/********************* spinner dual-ring *********************/
+/* https://loading.io/css/ */
+.lds-dual-ring,
+.lds-dual-ring:after {
+  box-sizing: border-box;
+}
+.lds-dual-ring {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6.4px solid currentColor;
+  border-color: currentColor transparent currentColor transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.lds-dual-ring {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+}
+/********************* spinner dual-ring *********************/
+
 
