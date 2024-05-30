@@ -1,10 +1,9 @@
 # -------------------------------- custom
 # --> gitsync tool
 **/backup
-# uncomment those after project is initialized:
-# gitsync.*
-# commit.*.txt
-# README.cmd
+gitsync.*
+commit.*.txt
+README.cmd
 # --------------------------------------------
 
 # --> this project

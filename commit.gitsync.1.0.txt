@@ -1,4 +1,0 @@
-WIP 1.0 
-	modified:   README.md
-	modified:   gitsync.cfg_custom.cmd
-	modified:   gitsync.cmd

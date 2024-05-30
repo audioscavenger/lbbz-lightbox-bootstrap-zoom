@@ -1,5 +1,0 @@
-WIP 1.1.0 
-	modified:   README.md
-	modified:   includes/css/lbbz.css
-	modified:   includes/js/lbbz.js
-	modified:   lbbz-lightbox-bootstrap-zoom.php
