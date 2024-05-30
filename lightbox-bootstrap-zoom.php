@@ -10,7 +10,7 @@ Author URI:   https://github.com/audioscavenger/
 License:      AGPLv3
 Requires WP: 6.5
 Requires PHP: 5.3
-Text Domain:  lbbz
+Text Domain:  lightbox-bootstrap-zoom
 Domain Path:  /languages
 License URI:  https://www.gnu.org/licenses/agpl-3.0.html
 */
@@ -55,6 +55,7 @@ define('LBBZ_MIN_PHP_VERSION', '5.3.0');
 // https://developer.wordpress.org/plugins/plugin-basics/best-practices/#folder-structure
 // https://developer.wordpress.org/plugins/wordpress-org/detailed-plugin-guidelines/
 // https://developer.wordpress.org/plugins/wordpress-org/planning-submitting-and-maintaining-plugins/
+// https://wordpress.org/plugins/plugin-check/
 // https://wordpress.org/plugins/developers/add/
 /* ============================================================= */
 

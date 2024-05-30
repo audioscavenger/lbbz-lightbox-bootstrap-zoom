@@ -1,10 +1,10 @@
-# lbbz LightBox Bootstrap Zoom
+# LightBox Bootstrap Zoom
 Lightbox Gallery for WordPress with zoom-in by scrolling. Will ignore actual WordPress galleries for compatibility.
 
-![lbbz LightBox Bootstrap Zoom screenshot](/assets/lbbz-example-zoom-featured-meme.avif "lbbz LightBox Bootstrap Zoom screenshot")
+![LightBox Bootstrap Zoom screenshot](/assets/example-zoom-featured-meme.avif "LightBox Bootstrap Zoom screenshot")
 
 
-## :scroll: lbbz LightBox Bootstrap Zoom: Table of Contents
+## :scroll: LightBox Bootstrap Zoom: Table of Contents
 - [Presentation](#Presentation)
   - [:sparkles: Features](#sparkles-Features)
   - [:memo: Compatibility](#memo-Compatibility)
@@ -35,11 +35,11 @@ Nothing to do or configure, just activate it! It's automatic, as long as:
 * your pictures have a link to the original (or custom) file
 * for galleries: link rel is the same for all images
 
-![lbbz how to activate it](/assets/screenshot-1.png "lbbz LightBox Bootstrap Zoom screenshot")
+![how to activate it](/assets/image-insert-advice.avif "LightBox Bootstrap Zoom screenshot")
 
 ## Install
 ### As a snippet:
-git clone https://github.com/audioscavenger/lbbz LightBox Bootstrap Zoom
+git clone https://github.com/audioscavenger/LightBox Bootstrap Zoom
 
 Then create a PHP, CSS and JS snippet with each of the files included.
 
@@ -52,14 +52,13 @@ Todo
 
 - [ ] Stop appending todo list
 - [ ] fix bugs: sometimes the sizes are not detected properly and a page refresh is needed
-- [ ] fix bugs: dragging image after resizing browser can become slow
 - [ ] embed bootstrap if needed
 - [ ] embed all that in a WP plugin and release it!
 - [ ] make money instead of coding for free?
 
 Releases
 
-1.3.1
+1.3.0
 - [x] WordPress plugin release!
 
 1.2.1
@@ -79,18 +78,13 @@ Releases
 - [x] bugfree snippets
 
 
-# :ribbon: License (is GNU AGPLv3)
-This project is distributed under [GNU Affero General Public License, Version 3][AGPLv3].
+# :ribbon: License
+GNU AGPLv3)
 
-                    GNU GENERAL PUBLIC LICENSE
-                       Version 3, 29 June 2007
+## :beer: Buy me a beer
+Like my work? This tool helped you? Want to sponsor more awesomeness like this?
 
- Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>
- Everyone is permitted to copy and distribute verbatim copies
- of this license document, but changing it is not allowed.
-
-install-rkit-portable  Copyright (C) 2019, Eric Derewonko
-This program comes with ABSOLUTELY NO WARRANTY;
-This is free software, and you are welcome to redistribute it
-under certain conditions; https://www.gnu.org/licenses/agpl-3.0.html
+<p align="center">
+ <a href="https://www.paypal.com/donate/?hosted_button_id=CD7P7PK3WP8WU"><img src="/assets/paypal-Donate-QR-Code.png" /></a>
+</p>
 

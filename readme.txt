@@ -31,7 +31,7 @@ You like it? You can't scrolling and zooming? [Paste some cash with PayPal](http
 
 == Installation ==
 
-Follow the standard [WordPress plugin installation procedure](https://wordpress.org/documentation/article/manage-plugins/).
+Follow the standard [WordPress plugin installation procedere](https://wordpress.org/documentation/article/manage-plugins/).
 
 == Screenshots ==
 
@@ -39,7 +39,7 @@ Follow the standard [WordPress plugin installation procedure](https://wordpress.
 
 == Changelog ==
 
-= 1.3.1 =
+= 1.3.0 =
 * Initial release
 
 = 1.2.1 =
@@ -59,7 +59,7 @@ Follow the standard [WordPress plugin installation procedure](https://wordpress.
 * bugfree snippets
 
 == Participate ==
-Join me at [Github](https://github.com/audioscavenger/lbbz-lightbox-bootstrap-zoom)
+Join me at [Github](https://github.com/audioscavenger/lightbox-bootstrap-zoom)
 
 
 == Upgrade Notice ==

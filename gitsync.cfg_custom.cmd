@@ -20,7 +20,7 @@ set editor=notepad
 set PROJECT=gitsync
 
 :: projectConfig= can be empty == the main batch file that holds a line that says "set version=x.y.z", scrapped to fill in commit file header
-set projectConfig=lbbz-lightbox-bootstrap-zoom.php
+set projectConfig=lightbox-bootstrap-zoom.php
 
 :: buildVersion= a version string like x.y.z used as header in the commit file, coming from %projectConfig%
 :: If your project does not have such a file, and buildVersionAutomated=empty, your will be prompted for a version == not unattended

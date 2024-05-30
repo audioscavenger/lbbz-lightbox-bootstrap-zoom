@@ -1,0 +1,10 @@
+release 1.3.1 WordPress
+    	modified:   README.md
+    	deleted:    assets/banner-772x250-clean.png
+    	modified:   gitsync.cmd
+    	modified:   lbbz-lightbox-bootstrap-zoom.php
+    	modified:   readme.txt
+	modified:   README.md
+	modified:   gitsync.cfg_custom.cmd
+	modified:   readme.txt
+	modified:   commit.gitsync.1.3.1.txt
